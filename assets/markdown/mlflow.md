@@ -1,6 +1,6 @@
-# experiences tracking with mlflow
+# experience tracking with mlflow
 
-![Concepts — MLflow 0.2.1 documentation](https://mlflow.org/docs/0.2.1/_static/MLflow-logo-final-black.png)
+![mlflow_logo](/home/tiagocabo/Documents/privateGit/tiagocabo.github.io/images/mlflow_logo.png)
 
 
 Mlflow is an open source project developed backed by databricks 
