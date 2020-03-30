@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Experience tracking with mlflow</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets//css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Return Home Page</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/tiagocabo/mlflow_example" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								
+								<h1> Experience tracking with mlflow </h1>
+
+								<p>With Mlflow tracking you can organize all your ML project experiences in one single platform.
+									Read the article to know more and click the github icon to access the repo.
+								</p>
+								
+								<div class="image main"><img src="images/mlflow_logo.png" alt="" /></div>
+
+								<p>
+									Mlflow is an open source tool backed by databricks. It works with several languages such as 
+									R, python and Java. It was designed to be multiuser and integrates easily with Apache Spark. 
+									 It has 3 main blocks:
+									<ul>
+										<li>MLflow Tracking</li>
+										<li>MLflow Projects</li>
+										<li>MLflow Models</li>
+									</ul>
+									MLflow Project is a tool to reproduce experience runs and 
+									MLflow Models is a file format to deploy the models. From now on I will 
+									only focus on MLflow tracking. 
+								</p>
+								
+								<h2> Wine dataset example </h2>
+
+								<p>Wine dataset was collected in the North Region of Portugal and  has the goal
+									of predicting the wine's quality based on chemical features. 
+									<a href="https://archive.ics.uci.edu/ml/datasets/Wine+Quality" target="_blank" >[source]</a>
+								</p>
+								<div class="image main"><img src="images/mlflow_article/wine_pic.jpg" alt="" /></div>
+
+								<p> Please check the github icon for full code and analysis.</p>
+								
+								<h3> MLflow step1 - Setup + UI </h3>
+								After installing mlflow using the console select your desire directory and run mlflow ui. 
+								<pre><code>pip install mlflow
+mlflow ui</code></pre>
+								<p> After initiating the ui you should see an image like this</p>
+
+								<div class="image main"><img src="images/mlflow_article/mlflowUI.png" alt="" /></div>
+								
+								<h3>Mlflow step2 - run the first experience</h3>
+								<p> MLflow provides some methods to configurate the mlflow session, like:
+
+									<ul>
+										<li>mlflow.set_tracking_uri('http://xx.xx.x.xx:5000')</li>
+										This is very useful when you have the mlflow client, running on a server. Which is something I recommend, 
+										in order for your colleages to have access your results.
+
+										<li>mlflow.set_experiment("Elastic Net")</li>
+										With this method you are able to create sections, in order to better organize the experiences
+
+										<li>mlflow.start_run('name')</li>
+										The goal of this command is just to setup up a new run. You can also give it a name.
+
+										<li>mlflow.set_tag("mlflow.note.content", "Greed search")</li>
+										With this method you can add note contents to your runs. This is very helpfull in order for you keep track of small
+										details of your experience that may not be expressed in the metrics/parameters/artifacts
+									</ul>
+
+									After adding this blocks you should get a similar structure. 
+									<div class="image main"><img src="images/mlflow_article/runSetup.png" alt="" /></div>
+
+									Mlfow has 3 main blocks to track information:
+									<ul>
+										<li> mlflow.log_params('name', object, step) </li>
+										<li> mlflow.log_metrics('name', object, step) </li>
+										<li> mlflow.log_artifacts('name', object, step) </li>
+									</ul>
+									
+									Once you have the metric logged you would be able to make plots, that can help you choose the model. 
+									You can compare the models. 
+
+									<div class="image main"><img src="images/mlflow_article/modelComp.png" alt="" /></div>
+
+								</p>
+								
+									<h2>Tips</h2>
+									In case you use a problem with epochs, I advise you to use the step params, because it will allow you a better comparison between epock.
+									The same could be used in k fold validation
+
+									<pre><code>import mlflow
+mlflow.log_metrics('name', variable, step)</code></pre>
+
+									<div class="image main"><img src="images/mlflow_article/step_params.png" alt="" /></div>
+
+									<h1>To sum up</h1>
+									<p>MLFlow is a tool of activily developent, with great features. I currently use MLflow tracking on my daily bases.
+										I found this tool when I start to have a lot of experiences, I felt lost between all the natebooks.
+									</p>
+									<p> Tiago Cabo</p>
+							</section>
+
+					</div>
+
+				<!-- Copyright -->
+				<div id="copyright">
+					<ul><li>&copy; Tiago Cabo</li><li>Design: <a href="https://html5up.net">
+						adapted with  <span style="color:red;">&hearts;</span> 
+						 HTML5 UP</a></li></ul>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
